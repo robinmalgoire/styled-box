@@ -1,0 +1,22 @@
+{
+  "name": "@rmalgoire/styled-box",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/Box.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinmalgoire/styled-box.git"
+  },
+  "author": "Robin Malgoire <hi@robinmalgoire.com> (http://www.robinmalgoire.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robinmalgoire/styled-box/issues"
+  },
+  "homepage": "https://github.com/robinmalgoire/styled-box#readme",
+  "dependencies": {
+    "styled-components": "^3.3.3"
+  }
+}
