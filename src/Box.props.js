@@ -11,9 +11,14 @@ export const padding = (arr) => {
     'bottom',
     'left'
   ].map((suffix, i) => values[i] !== null && css`
-    padding-${suffix}: ${values[i] === 'auto' ?'auto': toVUnit(values[i])};
+    padding-${suffix}: ${toVUnit(values[i])};
   `);
 }
+
+export const paddingTop = (value) => css`padding-top: ${toVUnit(value)}`;
+export const paddingRight = (value) => css`padding-right: ${toVUnit(value)}`;
+export const paddingBottom = (value) => css`padding-bottom: ${toVUnit(value)}`;
+export const paddingLeft = (value) => css`padding-left: ${toVUnit(value)}`;
 
 export const margin = (arr) => {
   const values = parseCSSArray(arr);
@@ -23,9 +28,14 @@ export const margin = (arr) => {
     'bottom',
     'left'
   ].map((suffix, i) => values[i] !== null && css`
-    margin-${suffix}: ${values[i] === 'auto' ?'auto': toVUnit(values[i])};
+    margin-${suffix}: ${toVUnit(values[i])};
   `);
 }
+
+export const marginTop = (value) => css`margin-top: ${toVUnit(value)}`;
+export const marginRight = (value) => css`margin-right: ${toVUnit(value)}`;
+export const marginBottom = (value) => css`margin-bottom: ${toVUnit(value)}`;
+export const marginLeft = (value) => css`margin-left: ${toVUnit(value)}`;
 
 export const border = (arr) => {
   const values = parseCSSArray(arr);
@@ -75,3 +85,15 @@ export const columns = (value) => css`grid-template-columns: repeat(${value}, 1f
 export const column = (value) => css`grid-column: ${value};`;
 
 export const row = (value) => css`grid-row: ${value};`;
+
+export const width = (value) => css`width: ${toVUnit(value)}`;
+
+export const minWidth = (value) => css`min-width: ${toVUnit(value)}`;
+
+export const maxWidth = (value) => css`max-width: ${toVUnit(value)}`;
+
+export const height = (value) => css`height: ${toVUnit(value)}`;
+
+export const minHeight = (value) => css`min-height: ${toVUnit(value)}`;
+
+export const maxHeight = (value) => css`max-height: ${toVUnit(value)}`;

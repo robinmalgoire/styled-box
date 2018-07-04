@@ -7,7 +7,7 @@ export const toEm = (value) => {
 }
 
 export const toVUnit = (value) => {
-  return typeof value !== null && value !== 0 ?
+  return typeof value !== null && typeof value !== 'string' && value !== 0 ?
     `calc(var(--line-height) * ${value})`
     : value;
 }
