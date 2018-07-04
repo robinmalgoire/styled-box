@@ -1,7 +1,7 @@
 
 import { css } from 'styled-components';
-import { toVUnit, backgroundPairing } from 'utils/mixins.styles';
-import { parseCSSArray } from 'utils/helpers';
+import { toVUnit, backgroundPairing } from './Box.mixins';
+import { parseCSSArray } from './Box.helpers';
 
 export const padding = (arr) => {
   const values = parseCSSArray(arr);
@@ -15,10 +15,10 @@ export const padding = (arr) => {
   `);
 }
 
-export const paddingTop = (value) => css`padding-top: ${toVUnit(value)}`;
-export const paddingRight = (value) => css`padding-right: ${toVUnit(value)}`;
-export const paddingBottom = (value) => css`padding-bottom: ${toVUnit(value)}`;
-export const paddingLeft = (value) => css`padding-left: ${toVUnit(value)}`;
+export const paddingTop = (value) => css`padding-top: ${toVUnit(value)};`;
+export const paddingRight = (value) => css`padding-right: ${toVUnit(value)};`;
+export const paddingBottom = (value) => css`padding-bottom: ${toVUnit(value)};`;
+export const paddingLeft = (value) => css`padding-left: ${toVUnit(value)};`;
 
 export const margin = (arr) => {
   const values = parseCSSArray(arr);
@@ -32,10 +32,10 @@ export const margin = (arr) => {
   `);
 }
 
-export const marginTop = (value) => css`margin-top: ${toVUnit(value)}`;
-export const marginRight = (value) => css`margin-right: ${toVUnit(value)}`;
-export const marginBottom = (value) => css`margin-bottom: ${toVUnit(value)}`;
-export const marginLeft = (value) => css`margin-left: ${toVUnit(value)}`;
+export const marginTop = (value) => css`margin-top: ${toVUnit(value)};`;
+export const marginRight = (value) => css`margin-right: ${toVUnit(value)};`;
+export const marginBottom = (value) => css`margin-bottom: ${toVUnit(value)};`;
+export const marginLeft = (value) => css`margin-left: ${toVUnit(value)};`;
 
 export const border = (arr) => {
   const values = parseCSSArray(arr);
@@ -86,14 +86,14 @@ export const column = (value) => css`grid-column: ${value};`;
 
 export const row = (value) => css`grid-row: ${value};`;
 
-export const width = (value) => css`width: ${toVUnit(value)}`;
+export const width = (value) => css`width: ${toVUnit(value)};`;
 
-export const minWidth = (value) => css`min-width: ${toVUnit(value)}`;
+export const minWidth = (value) => css`min-width: ${toVUnit(value)};`;
 
-export const maxWidth = (value) => css`max-width: ${toVUnit(value)}`;
+export const maxWidth = (value) => css`max-width: ${toVUnit(value)};`;
 
-export const height = (value) => css`height: ${toVUnit(value)}`;
+export const height = (value) => css`height: ${toVUnit(value)};`;
 
-export const minHeight = (value) => css`min-height: ${toVUnit(value)}`;
+export const minHeight = (value) => css`min-height: ${toVUnit(value)};`;
 
-export const maxHeight = (value) => css`max-height: ${toVUnit(value)}`;
+export const maxHeight = (value) => css`max-height: ${toVUnit(value)};`;

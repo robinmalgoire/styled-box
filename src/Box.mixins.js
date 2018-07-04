@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 export const toEm = (value) => {
-  return typeof value !== null && value !== 0 ?
+  return typeof value !== null && typeof value !== 'string' && value !== 0 ?
     `${value/16}em`
     : value;
 }
