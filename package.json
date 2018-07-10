@@ -1,8 +1,8 @@
 {
   "name": "@rmalgoire/styled-box",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "",
-  "main": "src/Box.js",
+  "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "./node_modules/.bin/webpack --mode production",

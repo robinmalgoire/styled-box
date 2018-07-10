@@ -1,3 +1,5 @@
+import * as boxProps from './Box.props';
+
 export const isObject = (variable) => {
   return variable && typeof variable === 'object' && variable.constructor === Object;
 }
@@ -5,6 +7,8 @@ export const isObject = (variable) => {
 export const intersectedKeys = (Object1, Object2) => {
   return Object.keys(Object1).filter(k => k in Object2)
 }
+
+export const intersectBoxKeys = (props) => intersectedKeys(props, boxProps);
 
 export const parseCSSArray = (arr) => {
   switch(arr.length) {

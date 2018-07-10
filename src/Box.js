@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
-import { isObject, intersectedKeys } from './Box.helpers';
+import { isObject, intersectBoxKeys } from './Box.helpers';
 import { media } from './Box.mixins';
 
 const Box = styled.div`
   ${props => {
-    return intersectedKeys(props, boxProps).map(key => {
+    return intersectBoxKeys(props).map(key => {
       const method = boxProps[key];
       const value = props[key];
 
