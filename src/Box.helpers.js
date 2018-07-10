@@ -10,6 +10,16 @@ export const intersectedKeys = (Object1, Object2) => {
 
 export const intersectBoxKeys = (props) => intersectedKeys(props, boxProps);
 
+export const intersectBoxProps = (props) => {
+  const intersectedBoxProps = {};
+
+  intersectedKeys(props, boxProps).map(key => {
+    intersectedBoxProps[key] = props[key];
+  });
+
+  return intersectedBoxProps;
+}
+
 export const parseCSSArray = (arr) => {
   switch(arr.length) {
     case 1:
