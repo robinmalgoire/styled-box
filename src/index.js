@@ -64,7 +64,9 @@ injectGlobal`
 const Button = styled(Box).attrs({
   as: 'button',
   type: 'button'
-})``
+})`
+  font-size: ${props => props.isBig ? '24px' : '12px'};
+`
 
 ReactDOM.render(
   <ThemeProvider theme={{
@@ -77,28 +79,21 @@ ReactDOM.render(
       margin={[null, 'auto']}
     >
       <Box 
+        type='text'
         margin={[2, null]}
         height={5}
         background='primary-400'
       />
-
       <Button
         padding={[.5, 1]}
         marginTop={1}
         background='primary-400'
         color='light-400'
-        radius={[1]}>Button
+        radius={[1]}
+        isBig
+      >
+        Button
       </Button>
-
-      <Button
-        type='submit'
-        padding={[.5, 1]}
-        marginTop={1}
-        background='primary-400'
-        color='light-400'
-        radius={[1]}>Submit
-      </Button>
-
     </Box>
   </ThemeProvider>
   , document.getElementById('app')

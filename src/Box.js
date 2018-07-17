@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
-import { isObject, intersectBoxKeys } from './Box.helpers';
+import { isObject, intersectBoxKeys, cleanHtmlAttribute } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
+
+
+
+
 const createElement = (originalProps) => {
-  const newProps = {...originalProps};
-
-  Object.keys(Box.propTypes).map(key => {
-    delete newProps[key];
-  })
-
-  return React.createElement(originalProps.as || 'div', newProps);
+  return React.createElement(originalProps.as || 'div', cleanHtmlAttribute(originalProps));
 };
 
 
