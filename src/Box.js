@@ -23,11 +23,11 @@ const Box = styled(createElement)`
       const value = props[key];
 
       if (!isObject(value)) {
-        return method(value);
+        return value !== null && method(value);
     
       } else {
         return Object.keys(value).map(mq => {
-          return media(mq)`
+          return value[mq] !== null && media(mq)`
             ${method(value[mq])}
           `;
         });
