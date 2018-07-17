@@ -152,6 +152,8 @@ export const cleanHtmlAttribute = (originalProps) => {
     'tabindex': '*',
     'className': '*',
     'children': '*',
+    'key': '*',
+    'to': '*'
   };
 
   const cleanAttributes = {};

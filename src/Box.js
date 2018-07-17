@@ -42,7 +42,7 @@ const objectOr = (other) => {
 }
 
 Box.propTypes = {
-  as: PropTypes.string,
+  as: objectOr([PropTypes.string]),
   padding: objectOr([PropTypes.array]),
   paddingTop: objectOr([PropTypes.number, PropTypes.string]),
   paddingRight: objectOr([PropTypes.number, PropTypes.string]),
