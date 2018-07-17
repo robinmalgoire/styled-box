@@ -1,10 +1,22 @@
+import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
 import { isObject, intersectBoxKeys } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
-const Box = styled.div`
+const createElement = (originalProps) => {
+  const newProps = {...originalProps};
+
+  Object.keys(Box.propTypes).map(key => {
+    delete newProps[key];
+  })
+
+  return React.createElement(originalProps.as || 'div', newProps);
+};
+
+
+const Box = styled(createElement)`
   ${props => {
     return intersectBoxKeys(props).map(key => {
       const method = boxProps[key];
