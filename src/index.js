@@ -61,14 +61,44 @@ injectGlobal`
   }
 `;
 
+const Button = styled(Box).attrs({
+  as: 'button',
+  type: 'button'
+})``
+
 ReactDOM.render(
   <ThemeProvider theme={{
     breakpoints: {
       desktop: 500,
     }
   }}>
-    <Box maxWidth={{mobile: '360px', desktop: '800px'}} margin={[null, 'auto']}>
-      <Box margin={[2, null]} height={5} background='primary-400' />
+    <Box
+      maxWidth={{mobile: '360px', desktop: '800px'}}
+      margin={[null, 'auto']}
+    >
+      <Box 
+        margin={[2, null]}
+        height={5}
+        background='primary-400'
+      />
+
+      <Button
+        padding={[.5, 1]}
+        marginTop={1}
+        background='primary-400'
+        color='light-400'
+        radius={[1]}>Button
+      </Button>
+
+      <Button
+        type='submit'
+        padding={[.5, 1]}
+        marginTop={1}
+        background='primary-400'
+        color='light-400'
+        radius={[1]}>Submit
+      </Button>
+
     </Box>
   </ThemeProvider>
   , document.getElementById('app')

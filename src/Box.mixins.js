@@ -59,9 +59,6 @@ export const backgroundPairing = (type) => {
       `;
 
     default:
-      return css`
-        background: var(--primary-400);
-        color: var(--font-light);
-      `;
+      return null;
   }
 }
