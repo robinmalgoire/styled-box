@@ -53,6 +53,7 @@ export const backgroundPairing = (type) => {
     case 'light-400': 
     case 'light-300': 
     case 'light-200': 
+    case 'white':
       return css`
         background: var(--${type});
         color: var(--font-dark);

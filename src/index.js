@@ -35,6 +35,8 @@ injectGlobal`
     --light-300          : #F7F8FB;
     --light-200          : #F9FAFC;
 
+    --white              : #FFF;
+
     --font-light         : #F7F8FB;
     --font-dark          : #3A3743;
 
