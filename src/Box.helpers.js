@@ -153,7 +153,9 @@ export const cleanHtmlAttribute = (originalProps) => {
     'className': '*',
     'children': '*',
     'key': '*',
-    'to': '*'
+    'to': '*',
+    'readOnly': '*',
+    'defaultValue': '*'
   };
 
   const cleanAttributes = {};
