@@ -72,6 +72,18 @@ export const radius = (arr) => {
   });
 }
 
+export const display = (value) => css`display: ${value};`;
+
+export const flexDirection = (value) => css`flex-direction: ${value};`;
+
+export const flexWrap = (value) => css`flex-wrap: ${value};`;
+
+export const justifyContent = (value) => css`justify-content: ${value};`;
+
+export const alignItems = (value) => css`align-items: ${value};`;
+
+export const alignContent = (value) => css`align-content: ${value};`;
+
 export const background = (value) => backgroundPairing(value);
 
 export const color = (value) => css`color: var(--${value});`;
@@ -85,6 +97,15 @@ export const columns = (value) => css`grid-template-columns: repeat(${value}, 1f
 export const column = (value) => css`grid-column: ${value};`;
 
 export const row = (value) => css`grid-row: ${value};`;
+
+export const columnGap = (value) => css`grid-column-gap: ${toVUnit(value)};`;
+
+export const rowGap = (value) => css`grid-row-gap: ${toVUnit(value)};`;
+
+export const gridGap = (value) => css`
+  grid-column-gap: ${toVUnit(value)};
+  grid-row-gap: ${toVUnit(value)};
+`;
 
 export const width = (value) => css`width: ${toVUnit(value)};`;
 
