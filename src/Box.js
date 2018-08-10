@@ -5,14 +5,9 @@ import { isObject, intersectBoxKeys, cleanHtmlAttribute } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
-
-
-
-
 const createElement = (originalProps) => {
   return React.createElement(originalProps.as || 'div', cleanHtmlAttribute(originalProps));
 };
-
 
 const Box = styled(createElement)`
   ${props => {
@@ -34,18 +29,23 @@ const Box = styled(createElement)`
   }}
 `;
 
-const objectOr = (other) => {
-  return PropTypes.oneOfType([].concat(
-    [PropTypes.object],
-    other
-  ));
-}
+const objectOr = (other) => PropTypes.oneOfType([].concat([PropTypes.object], other));
 
 Box.propTypes = {
+  // for createElement
   as: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string
   ]),
+
+  // BOX MODEL PROPERTIES
+  display: objectOr([PropTypes.string]),
+  width: objectOr([PropTypes.number, PropTypes.string]),
+  minWidth: objectOr([PropTypes.number, PropTypes.string]),
+  maxWidth: objectOr([PropTypes.number, PropTypes.string]),
+  height: objectOr([PropTypes.number, PropTypes.string]),
+  minHeight: objectOr([PropTypes.number, PropTypes.string]),
+  maxHeight: objectOr([PropTypes.number, PropTypes.string]),
   padding: objectOr([PropTypes.array]),
   paddingTop: objectOr([PropTypes.number, PropTypes.string]),
   paddingRight: objectOr([PropTypes.number, PropTypes.string]),
@@ -56,30 +56,33 @@ Box.propTypes = {
   marginRight: objectOr([PropTypes.number, PropTypes.string]),
   marginBottom: objectOr([PropTypes.number, PropTypes.string]),
   marginLeft: objectOr([PropTypes.number, PropTypes.string]),
-  border: objectOr([PropTypes.array]),
-  radius: objectOr([PropTypes.array]),
-  display: objectOr([PropTypes.string]),
+  borderRadius: objectOr([PropTypes.array]),
+
+  // FONT PROPERTIES
+  color: objectOr([PropTypes.string]),
+  textAlign: objectOr([PropTypes.string]),
+
+  // FLEX PROPERTIES
   flexDirection: objectOr([PropTypes.string]),
   flexWrap: objectOr([PropTypes.string]),
   justifyContent: objectOr([PropTypes.string]),
   alignItems: objectOr([PropTypes.string]),
   alignContent: objectOr([PropTypes.string]),
-  background: objectOr([PropTypes.string]),
-  color: objectOr([PropTypes.string]),
-  textAlign: objectOr([PropTypes.string]),
-  templates: objectOr([PropTypes.string]),
-  columns: objectOr([PropTypes.number]),
-  column: objectOr([PropTypes.number]),
-  row: objectOr([PropTypes.number]),
-  columnGap: objectOr([PropTypes.number]),
-  rowGap: objectOr([PropTypes.number]),
+
+  // GRID PROPERTIES
+  gridTemplateAreas: objectOr([PropTypes.string]),
+  gridTemplateColumns: objectOr([PropTypes.string, PropTypes.number]),
+  gridTemplateRows: objectOr([PropTypes.string, PropTypes.number]),
+  gridArea: objectOr([PropTypes.string]),
+  gridColumn: objectOr([PropTypes.string]),
+  gridRow: objectOr([PropTypes.string]),
+  gridColumnGap: objectOr([PropTypes.number]),
+  gridRowGap: objectOr([PropTypes.number]),
   gridGap: objectOr([PropTypes.number]),
-  width: objectOr([PropTypes.number, PropTypes.string]),
-  minWidth: objectOr([PropTypes.number, PropTypes.string]),
-  maxWidth: objectOr([PropTypes.number, PropTypes.string]),
-  height: objectOr([PropTypes.number, PropTypes.string]),
-  minHeight: objectOr([PropTypes.number, PropTypes.string]),
-  maxHeight: objectOr([PropTypes.number, PropTypes.string]),
+
+  // REQUIRE WORKS
+  border: objectOr([PropTypes.array]),
+  background: objectOr([PropTypes.string]),
 };
 
 export default Box;

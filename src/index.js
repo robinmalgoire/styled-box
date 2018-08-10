@@ -58,9 +58,11 @@ injectGlobal`
   }
 
   html {
-    background-image: linear-gradient(var(--light) 1px, transparent 1px);
+    font-family: sans-serif;
+    background-image: linear-gradient(var(--light-400) 1px, transparent 1px);
     background-size: 100% var(--line-height);
   }
+
 `;
 
 const Button = styled(Box).attrs({
@@ -80,22 +82,88 @@ ReactDOM.render(
       maxWidth={{mobile: '360px', desktop: '800px'}}
       margin={[null, 'auto']}
     >
-      <Box 
-        type='text'
-        margin={[2, null]}
-        height={5}
-        background='primary-400'
-      />
-      <Button
-        padding={[.5, 1]}
-        marginTop={1}
-        background='primary-400'
-        color='light-400'
-        radius={[1]}
-        isBig
+
+      <Box
+        display='flex'
+        background='light-400'
+        height={10}
       >
-        Button
-      </Button>
+        <Box
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          background='primary-400'
+          width={5}
+          minWidth='50%'
+          maxWidth='100%'
+          height={5}
+          minHeight='50%'
+          maxHeight='100%'
+          padding={[1]}
+          paddingTop={1}
+          paddingRight={1}
+          paddingBottom={1}
+          paddingLeft={1}
+          margin={['auto']}
+          marginTop='auto'
+          marginRight='auto'
+          marginBottom='auto'
+          marginLeft='auto'
+          borderRadius={[3]}
+          color='light-400'
+          textAlign='center'
+        >
+          box model and font properties
+        </Box>
+      </Box>
+
+      <Box
+        display={{mobile: 'block', desktop: 'flex'}}
+        justifyContent='center'
+        alignItems='center'
+        marginTop={1}
+        background='light-400'
+        minHeight={5}
+      >
+        <Box background='primary-200' padding={[1]} />
+        <Box background='primary-300' padding={[1]} />
+        <Box background='primary-400' padding={[1]} />
+      </Box>
+
+      <Box
+        display='grid'
+        gridTemplateAreas={{
+          mobile: `'A B C'`,
+          desktop: `'A C''B C'`
+        }}
+        gridGap={1}
+        padding={[1]}
+        marginTop={1}
+        background='light-400'
+        minHeight={5}
+      >
+        <Box gridArea='A' background='primary-200' padding={[1]} />
+        <Box gridArea='B' background='primary-300' padding={[1]} />
+        <Box gridArea='C' background='primary-400' padding={[1]} />
+      </Box>
+
+      <Box
+        display='grid'
+        gridTemplateColumns={{
+          mobile: 3,
+          desktop: '1fr 3fr 1fr'
+        }}
+        gridGap={1}
+        padding={[1]}
+        marginTop={1}
+        background='light-400'
+        minHeight={5}
+      >
+        <Box background='primary-200' padding={[1]} />
+        <Box background='primary-300' padding={[1]} />
+        <Box background='primary-400' padding={[1]} />
+      </Box>
+
     </Box>
   </ThemeProvider>
   , document.getElementById('app')
