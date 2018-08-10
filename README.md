@@ -22,7 +22,7 @@ injectGlobal`
 ```javascript
 import Box from '@rmalgoire/styled-box';
 
-<Box marginTop={1}>I'm a box</Box>
+<Box marginTop={1}>I am a box</Box>
 ```
 
 3 - Here your export
@@ -39,7 +39,12 @@ Okay, it's cool, but you will quickly realise that you need to write responsive 
 ```javascript
 import { ThemeProvider } from 'styled-components';
 
-<ThemeProvider theme={{ breakpoints: { desktop: 500 } }}>
+<ThemeProvider theme={{ breakpoints: {
+    tablet: 300,
+    desktop: 500,
+    ultraDesktop: 1000
+  }
+}}>
   <MyApp />
 </ThemeProvider>
 ```
@@ -47,16 +52,18 @@ import { ThemeProvider } from 'styled-components';
 2 - When setting a value for your props, just match the breakpoints object
 ```javascript
 <Box marginTop={{mobile: [1], desktop: [2]}}>
-  I'm a box with responsive margin
+  I am a box with responsive margin
 </Box>
 ```
 
 3 - Boom
 ```css
+/* mobile does not exist, so it just print the css directly */
 .bSYwGn {
   margin-top: calc(var(--line-height) * 1);
 }
 
+/* desktop is converted to em: 500/16 = 31.25 */
 @media (min-width: 31.25em) {
   .bSYwGn {
     margin-top: calc(var(--line-height) * 2);
