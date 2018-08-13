@@ -162,6 +162,7 @@ export const cleanHtmlAttribute = (originalProps) => {
 
   intersectedKeys(originalProps, whiteList).map(key => {
     if (key === 'children'
+       || key.startsWith('on')
        || key.startsWith('data')
        || key.startsWith('aria')
        || whiteList[key] === '*'
