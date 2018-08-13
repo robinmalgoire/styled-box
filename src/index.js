@@ -65,12 +65,11 @@ injectGlobal`
 
 `;
 
-const Button = styled(Box).attrs({
-  as: 'button',
+const Button = Box.withComponent('button').extend.attrs({
   type: 'button'
 })`
   font-size: ${props => props.isBig ? '24px' : '12px'};
-`
+`;
 
 ReactDOM.render(
   <ThemeProvider theme={{
@@ -116,7 +115,7 @@ ReactDOM.render(
             console.log('onClick')
           }}
         >
-          <Button isBig>
+          <Button height={2} isBig>
             Button
           </Button>
         </Box>

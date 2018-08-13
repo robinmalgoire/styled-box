@@ -1,15 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
-import { isObject, intersectBoxKeys, cleanHtmlAttribute } from './Box.helpers';
+import { isObject, intersectBoxKeys } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
-const createElement = (originalProps) => {
-  return React.createElement(originalProps.as || 'div', cleanHtmlAttribute(originalProps, Box.propTypes));
-};
-
-const Box = styled(createElement)`
+const Box = styled('div')`
   ${props => {
     return intersectBoxKeys(props).map(key => {
       const method = boxProps[key];
@@ -32,12 +27,6 @@ const Box = styled(createElement)`
 const objectOr = (other) => PropTypes.oneOfType([].concat([PropTypes.object], other));
 
 Box.propTypes = {
-  // for createElement
-  as: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string
-  ]),
-
   // BOX MODEL PROPERTIES
   display: objectOr([PropTypes.string]),
   width: objectOr([PropTypes.number, PropTypes.string]),

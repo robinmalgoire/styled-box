@@ -195,12 +195,6 @@ It will return:
 }
 ```
 
-## White list on createComponent
-
-As you understand, the main idea is to use props as a mix of inline/functional css. The issue is that React or Styled-component is printing a lot of these props into the final markup. I am not a big fan of it (I like my html to be neat). It mays not be a great idea, but I'm white listing the props when rendering the Box component. It means that only official html attribute or React attributes will go through. 
-- pro: clean html for my OCD
-- cons: may cause issue hahaha #yolo
-
 ## from 0.XX to 1.XX
 
 Okay so the main change between 0.XX and 1.XX is that most properties are not using shortcut anymore.  

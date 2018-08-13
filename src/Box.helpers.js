@@ -38,19 +38,3 @@ export const parseCSSArray = (arr) => {
       return null;
   }
 }
-
-export const nonCommonKeys = (Object1, Object2) => {
-  return Object.keys(Object1).filter(k => {
-    return k in Object2 ? false: true;
-  })
-}
-
-export const cleanHtmlAttribute = (originalProps, propTypes) => {
-  const cleanAttributes = {};
-
-  nonCommonKeys(originalProps, propTypes).map(key => {
-    cleanAttributes[key] = originalProps[key];
-  });
-
-  return cleanAttributes;
-}
