@@ -6,7 +6,7 @@ import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
 const createElement = (originalProps) => {
-  return React.createElement(originalProps.as || 'div', cleanHtmlAttribute(originalProps));
+  return React.createElement(originalProps.as || 'div', cleanHtmlAttribute(originalProps, Box.propTypes));
 };
 
 const Box = styled(createElement)`

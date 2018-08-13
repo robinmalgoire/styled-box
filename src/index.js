@@ -112,8 +112,13 @@ ReactDOM.render(
           borderRadius={[3]}
           color='light-400'
           textAlign='center'
+          onClick={() => {
+            console.log('onClick')
+          }}
         >
-          box model and font properties
+          <Button isBig>
+            Button
+          </Button>
         </Box>
       </Box>
 
