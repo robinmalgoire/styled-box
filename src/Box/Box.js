@@ -1,32 +1,55 @@
+import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
 import { isObject, intersectBoxKeys } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
-const Box = styled('div')`
-  ${props => {
-    return intersectBoxKeys(props).map(key => {
-      const method = boxProps[key];
-      const value = props[key];
+const createElement = (originalProps) => {
+  const newProps = {};
+  const tag = originalProps.as || 'div';
+  const privateProps = originalProps.private && Object.assign(...originalProps.private.map(k => ({[k]: null})));
+  const filteredProps = { ...Box.propTypes, ...privateProps }
 
-      if (!isObject(value)) {
-        return value !== null && method(value);
-    
-      } else {
-        return Object.keys(value).map(mq => {
-          return value[mq] !== null && media(mq)`
-            ${method(value[mq])}
-          `;
-        });
-      }
-    })
-  }}
+  Object.keys(originalProps).filter(k => !(k in filteredProps)).map(key => {
+    newProps[key] = originalProps[key];
+  });
+
+  return React.createElement(tag, newProps);
+};
+
+const renderCss = (props) => {
+  return intersectBoxKeys(props).map(key => {
+    const method = boxProps[key];
+    const value = props[key];
+
+    if (!isObject(value)) {
+      return value !== null && method(value);
+  
+    } else {
+      return Object.keys(value).map(mq => {
+        return value[mq] !== null && media(mq)`
+          ${method(value[mq])}
+        `;
+      });
+    }
+  })
+}
+
+const Box = styled(createElement)`
+  ${renderCss}
 `;
 
 const objectOr = (other) => PropTypes.oneOfType([].concat([PropTypes.object], other));
 
 Box.propTypes = {
+  // BOX CREATE ELEMENT ATTRIBUTES
+  as: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string
+  ]),
+  private: PropTypes.array,
+
   // BOX MODEL PROPERTIES
   display: objectOr([PropTypes.string]),
   width: objectOr([PropTypes.number, PropTypes.string]),
