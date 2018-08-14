@@ -1,3 +1,3 @@
-export { intersectBoxKeys as intersectBoxKeys } from './src/Box.helpers';
-export { intersectBoxProps as intersectBoxProps } from './src/Box.helpers';
-export { default as default } from './src/Box';
+export { intersectBoxKeys as intersectBoxKeys } from './src/styled-box/Box.helpers';
+export { intersectBoxProps as intersectBoxProps } from './src/styled-box/Box.helpers';
+export { default as default } from './src/styled-box/Box';

@@ -1,174 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
-import Box from './Box';
+import './demo/injectGlobal';
+
+import { ThemeProvider } from 'styled-components';
+import Box from './Box/Box';
+
+import ButtonAs from './demo/ButtonAs';
+import ButtonWithComponent from './demo/ButtonWithComponent';
+import DisplayFlex from './demo/DisplayFlex';
+import GridTemplateColumns from './demo/GridTemplateColumns';
+import GridTemplateAreas from './demo/GridTemplateAreas';
 
 
-injectGlobal`
-  /* --------------------------------
-  * Required CSS variables
-  * ------------------------------ */
-  :root {
-    --line-height        : 2rem;
+const theme = {
+  breakpoints: { desktop: 500 }
+};
 
-    --primary-600        : #453C77;
-    --primary-500        : #5C509E;
-    --primary-400        : #7364C6;
-    --primary-300        : #8F83D1;
-    --primary-200        : #ABA2DD;
-
-    --secondary-600      : #994C45;
-    --secondary-500      : #CC655C;
-    --secondary-400      : #FF7E73;
-    --secondary-300      : #FF988F;
-    --secondary-200      : #FFB2AB;
-
-    --dark-600           : #2C2932;
-    --dark-500           : #3A3743;
-    --dark-400           : #494554;
-    --dark-300           : #6D6A76;
-    --dark-200           : #928F98;
-
-    --light-600          : #939496;
-    --light-500          : #C4C5C8;
-    --light-400          : #F5F6FA;
-    --light-300          : #F7F8FB;
-    --light-200          : #F9FAFC;
-
-    --white              : #FFF;
-
-    --font-light         : #F7F8FB;
-    --font-dark          : #3A3743;
-
-    --border-width       : 2px;
-    --border-color       : currentColor;
-    --border-radius      : 3px;
-  }
-
-  /* --------------------------------
-   * Default styles
-   * ------------------------------ */
-
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    font-family: sans-serif;
-    background-image: linear-gradient(var(--light-400) 1px, transparent 1px);
-    background-size: 100% var(--line-height);
-  }
-
-`;
-
-const Button = Box.withComponent('button').extend.attrs({
-  type: 'button'
-})`
-  font-size: ${props => props.isBig ? '24px' : '12px'};
-`;
+const MainWrapper = (props) => (
+  <Box
+    maxWidth={{mobile: '360px', desktop: '800px'}}
+    margin={[null, 'auto']}
+    {...props}
+  />
+);
 
 ReactDOM.render(
-  <ThemeProvider theme={{
-    breakpoints: {
-      desktop: 500,
-    }
-  }}>
-    <Box
-      maxWidth={{mobile: '360px', desktop: '800px'}}
-      margin={[null, 'auto']}
-    >
+  <ThemeProvider theme={theme}>
+    <MainWrapper>
 
-      <Box
-        display='flex'
-        background='light-400'
-        height={10}
-      >
-        <Box
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-          background='primary-400'
-          width={5}
-          minWidth='50%'
-          maxWidth='100%'
-          height={5}
-          minHeight='50%'
-          maxHeight='100%'
-          padding={[1]}
-          paddingTop={1}
-          paddingRight={1}
-          paddingBottom={1}
-          paddingLeft={1}
-          margin={['auto']}
-          marginTop='auto'
-          marginRight='auto'
-          marginBottom='auto'
-          marginLeft='auto'
-          borderRadius={[3]}
-          color='light-400'
-          textAlign='center'
-          onClick={() => {
-            console.log('onClick')
-          }}
-        >
-          <Button height={2} isBig>
-            Button
-          </Button>
-        </Box>
-      </Box>
+      <ButtonAs marginTop={1} />
 
-      <Box
-        display={{mobile: 'block', desktop: 'flex'}}
-        justifyContent='center'
-        alignItems='center'
-        marginTop={1}
-        background='light-400'
-        minHeight={5}
-      >
-        <Box background='primary-200' padding={[1]} />
-        <Box background='primary-300' padding={[1]} />
-        <Box background='primary-400' padding={[1]} />
-      </Box>
+      <ButtonWithComponent marginTop={1} />
 
-      <Box
-        display='grid'
-        gridTemplateAreas={{
-          mobile: `'A B C'`,
-          desktop: `'A C''B C'`
-        }}
-        gridGap={1}
-        padding={[1]}
-        marginTop={1}
-        background='light-400'
-        minHeight={5}
-      >
-        <Box gridArea='A' background='primary-200' padding={[1]} />
-        <Box gridArea='B' background='primary-300' padding={[1]} />
-        <Box gridArea='C' background='primary-400' padding={[1]} />
-      </Box>
+      <DisplayFlex marginTop={1} />
 
-      <Box
-        display='grid'
-        gridTemplateColumns={{
-          mobile: 3,
-          desktop: '1fr 3fr 1fr'
-        }}
-        gridGap={1}
-        padding={[1]}
-        marginTop={1}
-        background='light-400'
-        minHeight={5}
-      >
-        <Box background='primary-200' padding={[1]} />
-        <Box background='primary-300' padding={[1]} />
-        <Box background='primary-400' padding={[1]} />
-      </Box>
+      <GridTemplateColumns marginTop={1} />
 
-    </Box>
+      <GridTemplateAreas marginTop={1} />
+  
+    </MainWrapper>
   </ThemeProvider>
   , document.getElementById('app')
 );

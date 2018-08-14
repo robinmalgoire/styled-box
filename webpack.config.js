@@ -3,15 +3,6 @@ const path = require('path');
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
-  resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-    alias: {
-      components: path.resolve(ROOT_PATH, 'src/components'),
-      containers: path.resolve(ROOT_PATH, 'src/containers'),
-      modules: path.resolve(ROOT_PATH, 'src/modules'),
-      utils: path.resolve(ROOT_PATH, 'src/utils'),
-    },
-  },
   module: {
     rules: [
       {
@@ -33,7 +24,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: path.resolve(ROOT_PATH, 'src/index.html'),
       filename: "index.html"
     })
   ],
