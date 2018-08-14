@@ -1,10 +1,24 @@
+import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
 import { isObject, intersectBoxKeys } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
-const Box = styled('div')`
+const createElement = (originalProps) => {
+  const newProps = {};
+  const tag = originalProps.as || 'div';
+  const privateProps = originalProps.private && Object.assign(...originalProps.private.map(k => ({[k]: null})));
+  const filteredProps = { ...Box.propTypes, ...privateProps }
+
+  Object.keys(originalProps).filter(k => !(k in filteredProps)).map(key => {
+    newProps[key] = originalProps[key];
+  });
+
+  return React.createElement(tag, newProps);
+};
+
+const Box = styled(createElement)`
   ${props => {
     return intersectBoxKeys(props).map(key => {
       const method = boxProps[key];
@@ -27,6 +41,14 @@ const Box = styled('div')`
 const objectOr = (other) => PropTypes.oneOfType([].concat([PropTypes.object], other));
 
 Box.propTypes = {
+
+  as: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string
+  ]),
+  private: PropTypes.array,
+
+
   // BOX MODEL PROPERTIES
   display: objectOr([PropTypes.string]),
   width: objectOr([PropTypes.number, PropTypes.string]),

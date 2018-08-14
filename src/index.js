@@ -65,7 +65,15 @@ injectGlobal`
 
 `;
 
-const Button = Box.withComponent('button').extend.attrs({
+const ButtonW = Box.withComponent('button').extend.attrs({
+  type: 'button'
+})`
+  font-size: ${props => props.isBig ? '24px' : '12px'};
+`;
+
+const ButtonAs = styled(Box).attrs({
+  as: 'button',
+  private: ['isBig'],
   type: 'button'
 })`
   font-size: ${props => props.isBig ? '24px' : '12px'};
@@ -81,6 +89,25 @@ ReactDOM.render(
       maxWidth={{mobile: '360px', desktop: '800px'}}
       margin={[null, 'auto']}
     >
+      <Box padding={[1]}>
+        <ButtonW
+          padding={[null, .5]}
+          height={2}
+          isBig
+          onClick={() => console.log('withComponent')}
+        >
+          withComponent
+        </ButtonW>
+
+        <ButtonAs
+          padding={[null, .5]}
+          height={2}
+          isBig
+          onClick={() => console.log('As attribute')}
+        >
+          As attribute
+        </ButtonAs>
+      </Box>
 
       <Box
         display='flex'
@@ -111,13 +138,8 @@ ReactDOM.render(
           borderRadius={[3]}
           color='light-400'
           textAlign='center'
-          onClick={() => {
-            console.log('onClick')
-          }}
         >
-          <Button height={2} isBig>
-            Button
-          </Button>
+          Hello
         </Box>
       </Box>
 
