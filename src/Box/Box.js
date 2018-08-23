@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as boxProps from './Box.props';
-import { isObject, intersectBoxKeys } from './Box.helpers';
+import { isObject, extractBoxProps, extractOtherProps } from './Box.helpers';
 import { media } from './Box.mixins';
 import PropTypes from 'prop-types';
 
@@ -19,9 +19,11 @@ const createElement = (originalProps) => {
 };
 
 const renderCss = (props) => {
-  return intersectBoxKeys(props).map(key => {
+  return Object.keys(extractBoxProps(props)).map(key => {
     const method = boxProps[key];
     const value = props[key];
+
+    if (typeof method !== 'function') return;
 
     if (!isObject(value)) {
       return value !== null && method(value);

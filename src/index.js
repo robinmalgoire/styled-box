@@ -10,7 +10,7 @@ import ButtonWithComponent from './demo/ButtonWithComponent';
 import DisplayFlex from './demo/DisplayFlex';
 import GridTemplateColumns from './demo/GridTemplateColumns';
 import GridTemplateAreas from './demo/GridTemplateAreas';
-
+import BoxHelpers from './demo/BoxHelpers';
 
 const theme = {
   breakpoints: { desktop: 500 }
@@ -37,6 +37,8 @@ ReactDOM.render(
       <GridTemplateColumns marginTop={1} />
 
       <GridTemplateAreas marginTop={1} />
+
+      <BoxHelpers marginTop={1} />
   
     </MainWrapper>
   </ThemeProvider>

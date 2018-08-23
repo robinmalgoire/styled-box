@@ -1,23 +1,24 @@
+import Box from './Box';
 import * as boxProps from './Box.props';
+
+export const extractBoxProps = (props) => {
+  const boxProps = {};
+  Object.keys(props).filter(k => k in Box.propTypes).map(key => {
+    boxProps[key] = props[key];
+  });
+  return boxProps;
+}
+
+export const extractOtherProps = (props, privateProps) => {
+  const otherProps = {};
+  Object.keys(props).filter(k => !(k in Box.propTypes)).map(key => {
+    otherProps[key] = props[key];
+  });
+  return otherProps;
+}
 
 export const isObject = (variable) => {
   return variable && typeof variable === 'object' && variable.constructor === Object;
-}
-
-export const intersectedKeys = (Object1, Object2) => {
-  return Object.keys(Object1).filter(k => k in Object2)
-}
-
-export const intersectBoxKeys = (props) => intersectedKeys(props, boxProps);
-
-export const intersectBoxProps = (props) => {
-  const intersectedBoxProps = {};
-
-  intersectedKeys(props, boxProps).map(key => {
-    intersectedBoxProps[key] = props[key];
-  });
-
-  return intersectedBoxProps;
 }
 
 export const parseCSSArray = (arr) => {
